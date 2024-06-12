@@ -17,7 +17,7 @@ const Register = async (name, email, mobile, password) => {
     try {
         const response = await axios.post(`${BACKEND_ORIGIN_URL}/user/register`, { name, email, mobile, password });
         console.log(response.data);
-        return response.data;
+        return response;
     } catch (error) {
         return error.response.data;
     }

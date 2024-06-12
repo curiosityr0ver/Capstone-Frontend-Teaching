@@ -1,15 +1,19 @@
 import { useState } from "react";
 import { Register } from "../api/User";
+import { useNavigate, Navigate } from "react-router-dom";
 
 function RegisterPage() {
 	const [name, setName] = useState();
 	const [email, setEmail] = useState();
 	const [mobile, setMobile] = useState();
 	const [password, setPassword] = useState();
+	const [showLoginRedirect, setShowLoginRedirect] = useState(false);
 
 	const handleRegister = async () => {
 		const response = await Register(name, email, mobile, password);
-		console.log(response);
+		if (response.status === 201) {
+			setShowLoginRedirect(true);
+		}
 	};
 
 	return (
@@ -36,6 +40,7 @@ function RegisterPage() {
 				onChange={(e) => setPassword(e.target.value)}
 			/>
 			<button onClick={handleRegister}>Register</button>
+			{showLoginRedirect && <Navigate to="/login" />}
 		</div>
 	);
 }
