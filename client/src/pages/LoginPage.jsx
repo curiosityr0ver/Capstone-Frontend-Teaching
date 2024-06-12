@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import { Login } from "../api/User";
 
-function AuthPage() {
+function LoginPage() {
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
 
@@ -28,4 +28,4 @@ function AuthPage() {
 	);
 }
 
-export default AuthPage;
+export default LoginPage;
